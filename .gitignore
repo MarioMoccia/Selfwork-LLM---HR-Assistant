@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+.DS_Store
+.env
+.files/
+# Indice ChromaDB persistente (avanzamento 3): dati rigenerabili, non codice sorgente
+data/
