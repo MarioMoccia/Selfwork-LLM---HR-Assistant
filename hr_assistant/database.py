@@ -6,14 +6,14 @@ from config import Config
 
 class Database:
     def __init__(self):
-        self.openai_ef = embedding_functions.OpenAIEmbeddingFunction(
-            api_key=Config.OPENAI_KEY, model_name=Config.MODEL_NAME
+        self.embedding_function = embedding_functions.OllamaEmbeddingFunction(
+            url=Config.OLLAMA_URL, model_name=Config.EMBEDDING_MODEL
         )
 
         # Initialize persistent client
         self.client = chromadb.PersistentClient(path=Config.PERSISTENT_DIR)
         self.collection = self.client.get_or_create_collection(
-            name=Config.COLLECTION_NAME, embedding_function=self.openai_ef
+            name=Config.COLLECTION_NAME, embedding_function=self.embedding_function
         )
 
     def add_documents(self, documents, metadatas, ids):
