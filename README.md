@@ -22,8 +22,10 @@ Il progetto è stato costruito per avanzamenti successivi, ognuno con il proprio
    dell'avanzamento 3 e aggiunge il tracciamento dei CV nel database vettoriale (vedi
    "Sincronizzazione dei documenti" più sotto).
 5. **Avanzamento 5:** aggiunge due azioni in chat ("Statistiche Database" e "Reindex
-   Database") e risolve il secondo esercizio di `ESERCIZI.md`, eliminando la doppia chiamata
-   al modello per estrarre nome e contatti del candidato.
+   Database", vedi `cl.Action`/`cl.action_callback`) e risolve il secondo esercizio di
+   `ESERCIZI.md`: elimina la chiamata separata al modello per il nome del candidato,
+   passando le prime righe del CV direttamente nel prompt principale, che ora genera anche
+   una sezione "contatti" (nome, email, telefono).
 
 ## Installazione Poetry
 
