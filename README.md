@@ -157,3 +157,20 @@ del corso Aulab.
 In chat è possibile trascinare uno o più file direttamente nel messaggio. Il sistema li salva
 in `resumes/`, li converte e li indicizza immediatamente. Il pulsante "Svuota completamente il
 Database" permette di ripartire da zero e forzare una nuova indicizzazione completa.
+
+## Personalizzazioni grafiche (dall'avanzamento 12)
+
+- **Tema colori:** definito in `public/theme.json`, con varianti chiaro/scuro secondo la
+  [documentazione Chainlit](https://docs.chainlit.io/customisation/theme). `theme2.json` e
+  `theme3.json` sono varianti alternative tenute come riferimento, non attive. `theme.md`
+  documenta la palette scelta (accento rosso) con i commenti sul significato di ogni colore.
+- **CSS personalizzato:** `public/app.css`, referenziato da `custom_css` in
+  `.chainlit/config.toml` (vedi la
+  [documentazione](https://docs.chainlit.io/customisation/custom-css)).
+- **Avatar distinti:** i messaggi generati dall'assistente HR e quelli di sistema (statistiche,
+  reindex, upload) usano due avatar diversi (`public/avatars/hr_assistant.png` e
+  `public/avatars/system_assistant.png`), passati con `cl.Message(author=...)` (vedi la
+  [documentazione](https://docs.chainlit.io/customisation/avatars#avatars)).
+- **Identità dell'app:** nome "HR Assistant Aulab", tema chiaro di default, favicon
+  personalizzata (`public/favicon.png`, `favicon-16x16.png`, `favicon3.ico`) e logo per tema
+  chiaro/scuro (`public/logo_light.png`, `public/logo_dark.png`).

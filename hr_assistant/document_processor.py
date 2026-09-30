@@ -70,7 +70,7 @@ class DocumentProcessor:
         }
 
         return metadata
-    #NEW
+
     def _process_zip_file(self, file_path: str) -> List[Tuple[str, str]]:
         """Process contents of ZIP files"""
         results = []
@@ -80,7 +80,10 @@ class DocumentProcessor:
                 for root, _, files in os.walk(temp_dir):
                     for file in files:
                         file_path = os.path.join(root, file)
-                        if (os.path.splitext(file)[1].lower()in self.SUPPORTED_EXTENSIONS):
+                        if (
+                            os.path.splitext(file)[1].lower()
+                            in self.SUPPORTED_EXTENSIONS
+                        ):
                             content = self._convert_to_markdown(file_path)
                             if content:
                                 results.append((file, content))
@@ -91,8 +94,8 @@ class DocumentProcessor:
         try:
             result = self.md_converter.convert(file_path)
             return result.text_content
-        except Exception as e:
-            print(f"Error converting {file_path}: {str(e)}")
+        except:
+            print(f"Error converting {file_path}")
             return ""
 
     def process_single_document(
@@ -112,11 +115,9 @@ class DocumentProcessor:
         content = ""
         if file_type == "archive":
             zip_contents = self._process_zip_file(file_path)
-            print("zip_contents", zip_contents)
             for filename, zip_content in zip_contents:
                 if zip_content:
                     content += f"\n\nFile: {filename}\n{zip_content}"
-                    print("ZIP content", content)
         else:
             content = self._convert_to_markdown(file_path)
 
@@ -139,7 +140,7 @@ class DocumentProcessor:
         current_files = {
             f: self.get_document_metadata(os.path.join(Config.DOCUMENTS_DIR, f))
             for f in os.listdir(Config.DOCUMENTS_DIR)
-            if os.path.splitext(f)[1].lower() in self.SUPPORTED_EXTENSIONS #NEW
+            if os.path.splitext(f)[1].lower() in self.SUPPORTED_EXTENSIONS
         }
 
         # Get existing files from database
