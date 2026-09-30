@@ -151,3 +151,9 @@ Corregge anche il chunking semantico per i testi che producono una sola "frase" 
 La cartella `resumes/` include CV fittizi in vari formati e alcuni materiali reali del corso
 usati come test di conversione — non sono dati generati, fanno parte del materiale didattico
 del corso Aulab.
+
+## Caricamento file da interfaccia (dall'avanzamento 11)
+
+In chat è possibile trascinare uno o più file direttamente nel messaggio. Il sistema li salva
+in `resumes/`, li converte e li indicizza immediatamente. Il pulsante "Svuota completamente il
+Database" permette di ripartire da zero e forzare una nuova indicizzazione completa.
