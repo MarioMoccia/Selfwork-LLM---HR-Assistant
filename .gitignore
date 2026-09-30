@@ -5,3 +5,5 @@ __pycache__/
 .files/
 # Indice ChromaDB persistente (avanzamento 3): dati rigenerabili, non codice sorgente
 data/
+# Modello di embedding locale (avanzamento 8): scaricato automaticamente al primo avvio
+modelli/

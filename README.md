@@ -31,13 +31,23 @@ Il progetto è stato costruito per avanzamenti successivi, ognuno con il proprio
    modello per il nome del candidato, tornando sui suoi passi rispetto all'avanzamento 5.
 7. **Avanzamento 7:** refactoring dello stesso chunking semantico, da funzioni statiche a una
    classe con metodi dedicati (`SemanticChunking`), nessun cambio di comportamento.
-8. **Avanzamento 8:** gli embedding diventano intercambiabili tra OpenAI, un modello locale
-   (`SentenceTransformer`) e Ollama, scelti da un solo parametro in `config.py`
+8. **Avanzamento 8 (bonus):** gli embedding diventano intercambiabili tra OpenAI, un modello
+   locale (`SentenceTransformer`) e Ollama, scelti da un solo parametro in `config.py`
    (`Config.EMBEDDING_PROVIDER`, vedi `custom_embedding.py`). Di serie usa embedding locali e
    chat via Ollama: è l'unico avanzamento eseguibile senza alcuna chiave API.
-9. **Avanzamento 9:** l'LLM classifica ogni messaggio dell'utente come ricerca di un nuovo CV
-   o domanda di approfondimento su un CV già trovato, e la chat mantiene il contesto
+9. **Avanzamento 9 (bonus):** l'LLM classifica ogni messaggio dell'utente come ricerca di un
+   nuovo CV o domanda di approfondimento su un CV già trovato, e la chat mantiene il contesto
    dell'ultimo CV individuato per rispondere alle domande di follow-up.
+
+   Gli avanzamenti 8 e 9 sono un'esplorazione a parte, come l'avanzamento 4 (bonus) più sopra:
+   anche il materiale del corso li tratta come un ramo secondario, non proseguito. Per questo
+   motivo l'avanzamento 10 (qui sotto) riprende il codice dall'avanzamento 7, non da questi due.
+10. **Avanzamento 10:** lettura di formati file diversi da testo semplice (vedi "Formati file
+    supportati" più sotto), tramite [`markitdown`](https://github.com/microsoft/markitdown).
+11. **Avanzamento 11:** caricamento di uno o più file direttamente dall'interfaccia di chat,
+    processati e indicizzati al volo (vedi "Caricamento file da interfaccia" più sotto).
+12. **Avanzamento 12:** personalizzazione grafica dell'interfaccia (vedi "Personalizzazioni
+    grafiche" più sotto): tema colori, CSS, avatar, favicon.
 
 ## Installazione Poetry
 
