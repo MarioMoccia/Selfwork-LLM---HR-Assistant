@@ -40,9 +40,8 @@ class DocumentProcessor:
 
         with open(file_path, "r") as file:
             txt = file.read()
-            # OLD
-            # chunks = file.read().replace("\n", ".").split("### ")
-            chunks = SemanticChunking.chunk_it(txt)
+            sc = SemanticChunking()
+            chunks = sc.chunk_text(txt)
             file_metadata = DocumentProcessor.get_document_metadata(file_path)
 
             for chunk in chunks:
