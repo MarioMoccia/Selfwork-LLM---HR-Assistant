@@ -59,7 +59,7 @@ Il progetto è stato costruito per avanzamenti successivi, ognuno con il proprio
 poetry install
 ```
 
-### Versione con OpenAI (avanzamenti 2, 3, 4, 5)
+### Versione con OpenAI (default dall'avanzamento 2)
 
 Copia `.env.example` in `.env` e inserisci la tua chiave OpenAI:
 
@@ -132,5 +132,22 @@ caratteri arbitrario.
 apposta: è un testo lungo e in inglese, utile per osservare il chunking semantico su un
 documento più corposo dei singoli CV.
 
-Dall'avanzamento 8 il modello di embedding usato per il chunking è configurabile allo stesso
-modo di quello del database vettoriale (OpenAI, locale o Ollama), tramite `custom_embedding.py`.
+(Il modello di embedding configurabile tra OpenAI/locale/Ollama era una caratteristica
+dell'avanzamento 8, bonus: dall'avanzamento 10 il chunking torna a usare OpenAI, come
+l'avanzamento 7, con l'aggiunta della lettura multi-formato descritta qui sotto.)
+
+## Formati file supportati (dall'avanzamento 10)
+
+Oltre ai file `.txt`, il sistema legge e indicizza documenti (`.pdf`, `.doc`, `.docx`),
+presentazioni (`.ppt`, `.pptx`), fogli di calcolo (`.xls`, `.xlsx`), pagine web (`.html`,
+`.htm`), dati (`.csv`, `.json`, `.xml`) e archivi `.zip` (i file supportati al suo interno
+vengono estratti e processati uno per uno). La conversione è affidata a
+[`markitdown`](https://github.com/microsoft/markitdown), installata con tutti gli extra
+(`markitdown[all]`).
+
+Corregge anche il chunking semantico per i testi che producono una sola "frase" molto lunga
+(tipico di PDF mal formattati), con una funzione di split di riserva.
+
+La cartella `resumes/` include CV fittizi in vari formati e alcuni materiali reali del corso
+usati come test di conversione — non sono dati generati, fanno parte del materiale didattico
+del corso Aulab.
