@@ -3,6 +3,8 @@ import numpy as np
 from langchain_openai import OpenAIEmbeddings
 from sklearn.metrics.pairwise import cosine_similarity
 
+from config import Config
+
 
 #
 # Spiegazione Generale della Logica:
@@ -12,7 +14,9 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 class SemanticChunking:
     def __init__(self, api_key, breakpoint_percentile=95, buffer_size=1):
-        self.embeddings = OpenAIEmbeddings(openai_api_key=api_key)
+        # Specifico il modello (altrimenti langchain_openai usa di default il vecchio
+        # text-embedding-ada-002, a cui alcuni progetti OpenAI non hanno più accesso).
+        self.embeddings = OpenAIEmbeddings(openai_api_key=api_key, model=Config.MODEL_NAME)
         self.breakpoint_percentile = breakpoint_percentile
         self.buffer_size = buffer_size
 
